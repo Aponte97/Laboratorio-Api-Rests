@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "name": "laboratorio-api-rests",
+  "version": "1.0.0",
+  "description": "prueva de laboratorio",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+     "dev": "node index.js"
+  },
+  "author": "Diego Aponte y Juan Esteban",
+  "license": "ISC"
+}
