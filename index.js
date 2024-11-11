@@ -8,6 +8,8 @@ const PORT = 3000;
 
 app.use(express.json());
 
+//FUNCION LEER
+
 function readData() {
     try {                                         
         const data = fs.readFileSync(dbPath, 'utf-8');
@@ -17,6 +19,8 @@ function readData() {
         return { clientes: [], productos: [], carrito: [] };
     }
 }
+//FUNCION ESCRIBIR
+
 function writeData(data) {
     try {
         fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
@@ -24,18 +28,20 @@ function writeData(data) {
         console.error("Error al escribir en la base de datos:", error);
     }
 }
+// ENDPOINT PARA MOSTRAR CLIENTES
 app.get('/clientes', (req, res) => {
     const data = readData();
     res.json(data.clientes);
 });
 
-
+// ENDPOINT PARA MOSTRAR CARRITO
 
 app.get('/carrito', (req, res) => {
     const data = readData();
     res.json(data.carrito);
 });
 
+// ENDPOINT PARA MOSTRAR PRODUCTOS
 
 app.get('/productos', (req, res) => {
     const data = readData();
