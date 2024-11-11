@@ -222,6 +222,25 @@ app.patch('/clientes/:id', (req, res) => {
 });
 
 
+// METODO DELETE PARA ELIMINAR CLIENTES
+app.delete('/clientes/:id', (req, res) => {
+    const clienteId = parseInt(req.params.id);  
+
+    const data = readData();                    
+    const clienteIndex = data.clientes.findIndex(c => c.id_cliente === clienteId);
+
+    if (clienteIndex === -1) {                  
+        return res.status(404).json({ error: 'Cliente no encontrado' });
+    }
+
+    data.clientes.splice(clienteIndex, 1); 
+
+    writeData(data);                            
+    res.status(200).json({ message: 'Cliente eliminado correctamente' });
+});
+
+
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
