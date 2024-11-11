@@ -84,6 +84,58 @@ app.get('/carrito/:id', (req, res) => {
     }
 });
 
+// Métodos POST 
+
+//endpoint para agregar con post clientes
+
+app.post('/clientes', (req, res) => {
+    
+    const newCliente = req.body;
+
+    const data = readData();
+    const ClienteExistente = data.clientes.find(c => c.id ===newCliente.id_cliente);
+    if (ClienteExistente) {
+        return res.status(409).json({ error: 'Ya existe un cliente con este ID' });
+    }
+    data.clientes.push(newCliente);
+    writeData(data);
+
+    res.status(201).json(newCliente);  
+});
+
+
+//endpoint para agregar con post productos
+ 
+app.post('/productos', (req, res) => {    
+const nuevoProducto = req.body;
+const data = readData();
+const productoExistente = data.productos.find(p => p.id === nuevoProducto.id);
+if (productoExistente) {
+    return res.status(409).json({ error: 'Ya existe un producto con este ID' });
+}
+
+data.productos.push(nuevoProducto);
+writeData(data);
+
+res.status(201).json(nuevoProducto);  
+});
+
+//endpoint para agregar con post carrito de compras
+
+app.post('/carrito', (req, res) => {    
+const nuevoCarrito = req.body;
+const data = readData();
+const CarritoExistente = data.carrito.find(p => p.id === nuevoCarrito.id);
+const carritoExistente = data.carrito.find(c => c.id === nuevoCarrito.id);
+if (carritoExistente) {
+    return res.status(409).json({ error: 'Ya existe un carrito con este ID' });
+}
+
+data.carrito.push(nuevoCarrito);
+writeData(data);
+
+res.status(201).json(nuevoCarrito);  
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
