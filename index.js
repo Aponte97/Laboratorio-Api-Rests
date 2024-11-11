@@ -137,6 +137,68 @@ writeData(data);
 res.status(201).json(nuevoCarrito);  
 });
 
+//Metodo Put
+//ENDPOINT PARA ACTUALIZAR CLIENTES
+
+app.put('/clientes/:id', (req, res) => {
+    const clienteId = parseInt(req.params.id);
+    const clienteActualizado = req.body;
+
+    const data = readData();
+
+    const clienteIndex = data.clientes.findIndex(c => c.id_cliente === clienteId);
+    if (clienteIndex === -1) {
+        return res.status(404).json({ error: 'Cliente no encontrado' });
+    }
+
+    data.clientes[clienteIndex] = {
+        ...data.clientes[clienteIndex],
+        ...clienteActualizado
+    };
+    writeData(data);
+    res.status(200).json(data.clientes[clienteIndex]);
+});
+
+//ENDPOINT PARA ACTUALIZAR PRODUCTOS
+
+app.put('/productos/:id', (req, res) => {
+    const productoId = parseInt(req.params.id);
+    const productoActualizado = req.body;
+
+    const data = readData();
+
+    const productoIndex = data.productos.findIndex(p => p.id === productoId);
+    if (productoIndex === -1) {
+        return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+
+    data.productos[productoIndex] = {
+        ...data.productos[productoIndex],
+        ...productoActualizado
+    };
+
+    writeData(data);
+    res.status(200).json(data.productos[productoIndex]);
+});
+
+//ENDPOINT PARA ACTUALIZAR CARRITO DE COMPRAS
+
+app.put('/carrito/:id', (req, res) => {
+    const carritoId = parseInt(req.params.id);
+    const carritoActualizado = req.body;
+    const data = readData();
+    const carritoIndex = data.carrito.findIndex(c => c.id_cliente === carritoId);
+    if (carritoIndex === -1) {
+        return res.status(404).json({ error: 'Carrito no encontrado para este cliente' });
+    }
+    data.carrito[carritoIndex] = {
+        ...data.carrito[carritoIndex],
+        ...carritoActualizado
+    };
+    writeData(data);
+    res.status(200).json(data.carrito[carritoIndex]);
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
