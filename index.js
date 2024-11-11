@@ -17,3 +17,10 @@ function readData() {
         return { clientes: [], productos: [], carrito: [] };
     }
 }
+function writeData(data) {
+    try {
+        fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+    } catch (error) {
+        console.error("Error al escribir en la base de datos:", error);
+    }
+}
