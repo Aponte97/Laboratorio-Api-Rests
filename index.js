@@ -24,3 +24,20 @@ function writeData(data) {
         console.error("Error al escribir en la base de datos:", error);
     }
 }
+app.get('/clientes', (req, res) => {
+    const data = readData();
+    res.json(data.clientes);
+});
+
+
+
+app.get('/carrito', (req, res) => {
+    const data = readData();
+    res.json(data.carrito);
+});
+
+
+app.get('/productos', (req, res) => {
+    const data = readData();
+    res.json(data.productos);
+});
