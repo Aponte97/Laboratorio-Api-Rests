@@ -65,6 +65,12 @@
       "nombre_cliente": "Diego Aponte",
       "direccion_cliente": "Calle del Mar 40",
       "celular_cliente": "555-78383"
+    },
+    {
+      "id_cliente": 12,
+      "nombre_cliente": "Juan Esteban Torres",
+      "direccion_cliente": "Campohermoso calle 3",
+      "celular_cliente": "3214321234"
     }
   ],
   "productos": [

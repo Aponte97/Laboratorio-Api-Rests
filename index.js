@@ -199,6 +199,29 @@ app.put('/carrito/:id', (req, res) => {
     res.status(200).json(data.carrito[carritoIndex]);
 });
 
+// METODO PATCH ENDPOINT PATCH PARA CLIENTES
+app.patch('/clientes/:id', (req, res) => {
+    const clienteId = parseInt(req.params.id);
+    const camposActualizados = req.body;
+
+    const data = readData();
+    const clienteIndex = data.clientes.findIndex(c => c.id_cliente === clienteId);
+
+    if (clienteIndex === -1) {
+        return res.status(404).json({ error: 'Cliente no encontrado' });
+    }
+
+    // Actualiza solo los campos proporcionados en la solicitud
+    data.clientes[clienteIndex] = {
+        ...data.clientes[clienteIndex],
+        ...camposActualizados
+    };
+
+    writeData(data);
+    res.status(200).json(data.clientes[clienteIndex]);
+});
+
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
