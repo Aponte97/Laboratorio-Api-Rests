@@ -25,10 +25,16 @@
       "celular_cliente": "555-4321"
     },
     {
-      "id_cliente": 5
+      "id_cliente": 5,
+      "nombre_cliente": "lina Castillo",
+      "direccion_cliente": "Avenida Siempre Viva 700",
+      "celular_cliente": "555-484"
     },
     {
-      "id_cliente": 6
+      "id_cliente": 6,
+      "nombre_cliente": "Marina",
+      "direccion_cliente": "Avenida Siempre Viva 701",
+      "celular_cliente": "555-67787"
     },
     {
       "id_cliente": 7,
@@ -37,7 +43,10 @@
       "celular_cliente": "555-9876"
     },
     {
-      "id_cliente": 8
+      "id_cliente": 8,
+      "nombre_cliente": "jhon Parra",
+      "direccion_cliente": "Avenida Siempre Viva 702",
+      "celular_cliente": "555-7680"
     },
     {
       "id_cliente": 9,
@@ -173,7 +182,12 @@
     },
     {
       "id_cliente": 5,
-      "productos": []
+      "productos": [
+        {
+          "id_producto": 8,
+          "cantidad": 6
+        }
+      ]
     },
     {
       "id_cliente": 6,
