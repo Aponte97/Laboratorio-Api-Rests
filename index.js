@@ -7,6 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+const dbPath = path.join(process.cwd(), 'db.json');
 
 //FUNCION LEER
 
@@ -47,6 +48,7 @@ app.get('/productos', (req, res) => {
     const data = readData();
     res.json(data.productos);
 });
+
 app.get('/clientes/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const data = readData();
@@ -80,4 +82,9 @@ app.get('/carrito/:id', (req, res) => {
     } else {
         res.status(404).json("Carrito no encontrado para este cliente");
     }
+});
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

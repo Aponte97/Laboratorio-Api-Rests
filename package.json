@@ -11,5 +11,6 @@
      "dev": "node index.js"
   },
   "author": "Diego Aponte y Juan Esteban",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }
